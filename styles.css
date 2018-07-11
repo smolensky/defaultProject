@@ -1,0 +1,18 @@
+section#itemTemplate{
+	width: 50%;
+	background-color: gray;
+	border: solid 1px black;
+}
+ul#formInput{
+	list-style-type: none;
+}
+ul#formInput li{
+	margin: 5% 10% 5% 0;
+	align: left;
+}
+ul#formInput li span{
+	
+}
+ul#formInput li input{
+	text-align: left;
+}
