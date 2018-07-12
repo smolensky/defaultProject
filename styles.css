@@ -3,15 +3,24 @@ section#itemTemplate{
 	background-color: gray;
 	border: solid 1px black;
 }
-ul#formInput{
+section#itemList{
+	width: 50%;
+	background-color: green;
+	border: solid 1px black;
+}
+ul{
 	list-style-type: none;
 }
 ul#formInput li{
 	margin: 5% 10% 5% 0;
 	align: left;
 }
+ul#item li{
+	border: solid 1px black;
+	margin: 1% 5% 1% 0;
+}
 ul#formInput li span{
-	
+
 }
 ul#formInput li input{
 	text-align: left;

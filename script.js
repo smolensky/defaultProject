@@ -3,6 +3,7 @@ var item = {
 	title: 'none',
 	description: 'none'
 };
+var itemList = [];
 
 function addNewItem(){
 	var title = this.itemTitle.value;
@@ -11,13 +12,21 @@ function addNewItem(){
 	item.title = title;
 	item.description = description;
 	
-	var newItemContainer = document.getElementById('item');
-	newItemContainer.innerHTML += 
-	'<li>\
-	<span>' + item.title + '</span>\
-	</br>\
-	<p>' + item.description + '</p>\
-	</li>';
+	itemList.unshift(item);
 	
+	updateItemList(itemList);
+}
+
+function updateItemList(itemList) {
+	var newItemContainer = document.getElementById('item');
+	var itemLi = document.createElement('li');
+	var itemTitle1 = document.createTextNode(item.title);
+	var itemDescription1 = document.createTextNode(item.description);
+	
+	
+	itemLi.appendChild(itemTitle1);
+	itemLi.appendChild(itemDescription1);
+	
+	newItemContainer.appendChild(itemLi);
 	debugger;
 }
