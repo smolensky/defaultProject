@@ -1,9 +1,38 @@
 //document.writeln('hello');
 var item = {
+	id: 1,
 	title: 'none',
-	description: 'none'
+	description: 'none',
+	status: 'none'
 };
 var itemList = [];
+
+function createItem(a){
+	debugger;
+	item.title = a.itemTitle.value;
+	item.description = a.itemDescription.value;
+	
+	return item;
+}
+
+function setItemStatus(a){
+	if(a !== ''){ 
+		return item.status = a; 
+	} else {
+		return item.status = 'planned';
+	}
+}
+
+function saveItem(){
+	debugger;
+	var draftItem = createItem(this);
+	draftItem.status = setItemStatus('');
+	
+	itemList.push(draftItem);
+}
+
+
+
 
 function addNewItem(){
 	var title = this.itemTitle.value;
@@ -30,3 +59,12 @@ function updateItemList(itemList) {
 	newItemContainer.appendChild(itemLi);
 	debugger;
 }
+
+
+
+
+
+function showArrayAsItemList(o){
+	
+}
+
