@@ -1,34 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<script type="text/javascript" charset="utf-8" src="script.js"></script>
 	<link rel="stylesheet" href="styles.css">
 	<title>To Do, yes it is</title>
 </head>
 <body>
-	<section id='itemTemplate'>
-		<div>
-			<form action='#' onsubmit='saveItem()'>
-				<ul id='formInput'>
-				<li>
-					<span>Title</span>
-					<input id='itemTitle' type='text'></input>
-				</li>
-				<li>
-					<span>Description</span>
-					<input id='itemDescription' type='text'></input>
-				</li>
-				<li>
-					<input id='itemSubmit' type='submit' value='Add to list'></input>
-				</li>
-				</ul>
-			</form>
-		</div>
-	</section>
-	<section id='itemList'>
-		<ul id='item'>
-			
-		</ul>
-	</section>
+	<div id="newItem" class="inputForm">
+        <input id="itemText" type="text" placeholder="Type task here">
+        <button id="itemSubmit" type="button" onclick="addItem()">Add task</button>
+	</div>
+	<ul id="itemsList" class="taskList">
+
+	</ul>
+<script type="text/javascript" charset="utf-8" src="script.js"></script>
 </body>
 </html>

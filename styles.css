@@ -1,27 +1,27 @@
-section#itemTemplate{
-	width: 50%;
-	background-color: gray;
-	border: solid 1px black;
+.inputForm{
+    border: solid 1px black;
+    border-radius: 10px;
+    padding: 1%;
+    width: 43%;
 }
-section#itemList{
-	width: 50%;
-	background-color: green;
-	border: solid 1px black;
-}
-ul{
-	list-style-type: none;
-}
-ul#formInput li{
-	margin: 5% 10% 5% 0;
-	align: left;
-}
-ul#item li{
-	border: solid 1px black;
-	margin: 1% 5% 1% 0;
-}
-ul#formInput li span{
 
+.taskList{
+    list-style: none;
+    padding: 1%;
+    border-radius: 10px;
+    width: 50%;
 }
-ul#formInput li input{
-	text-align: left;
+
+.taskList li{
+    margin: 1%;
+    border: solid 1px black;
+    padding: 1% 1% 1% 5%;
+    border-radius: 10px;
+}
+
+.checked{
+    background-color: darkgray;
+    color: white;
+    opacity: 0.5;
+    text-decoration: line-through;
 }
