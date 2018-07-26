@@ -33,8 +33,8 @@
 		</div>
 		</div>
 		<div id="itemsPanel">
-		<ul>
-			<li>
+		<ul id="itemsList">
+			<li id="item1">
 			test
 			<i class="fas fa-trash"></i>
 			<i class="fas fa-clone"></i>
@@ -56,9 +56,9 @@
 		</div>
 		<div id="editPanel">
 		<div>
-			<input type="text" placeholder="Title">
-			<textarea rows="5" placeholder="Comment"></textarea>
-			<span class="button">
+			<input id="title" type="text" placeholder="Title">
+			<textarea id="comment" rows="5" placeholder="Comment(optional)"></textarea>
+			<span class="button" onclick="Save()">
 			<i class="fas fa-save"></i>
 			Save
 			</span>
