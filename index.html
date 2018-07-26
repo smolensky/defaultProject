@@ -2,16 +2,74 @@
 <html>
 <head>
 	<link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 	<title>To Do, yes it is</title>
 </head>
 <body>
-	<div id="newItem" class="inputForm">
-        <input id="itemText" type="text" placeholder="Type task here">
-        <button id="itemSubmit" type="button" onclick="addItem()">Add task</button>
+	<div class="mainPanel">
+	<div id="searchPanel">
+		<div id="searchInput">
+			<i class="fas fa-search"></i>
+			<input class="searchText" type="text" placeholder="Search..">
+		</div>
 	</div>
-	<ul id="itemsList" class="taskList">
-
-	</ul>
+	<div>
+		<div id="rightMenuPanel">
+		<div>
+			<i class="fas fa-align-justify"></i>
+			<span>All</span>
+		</div>
+		<div>
+			<i class="far fa-check-circle"></i>
+			<span>Active</span>
+		</div>
+		<div>
+			<i class="fas fa-check-circle"></i>
+			<span>Done</span>
+		</div>
+		<div>
+			<i class="fas fa-trash"></i>
+			<span>Clear</span>
+		</div>
+		</div>
+		<div id="itemsPanel">
+		<ul>
+			<li>
+			test
+			<i class="fas fa-trash"></i>
+			<i class="fas fa-clone"></i>
+			<i class="fas fa-pen"></i>
+			</li>
+			<li>
+			test
+			<i class="fas fa-trash"></i>
+			<i class="fas fa-clone"></i>
+			<i class="fas fa-pen"></i>
+			</li>
+			<li>
+			test
+			<i class="fas fa-trash"></i>
+			<i class="fas fa-clone"></i>
+			<i class="fas fa-pen"></i>
+			</li>
+		</ul>
+		</div>
+		<div id="editPanel">
+		<div>
+			<input type="text" placeholder="Title">
+			<textarea rows="5" placeholder="Comment"></textarea>
+			<span class="button">
+			<i class="fas fa-save"></i>
+			Save
+			</span>
+			<span class="button">
+			<i class="fas fa-ban"></i>
+			Discard
+			</span>
+		</div>
+		</div>
+	</div>
+	</div>
 <script type="text/javascript" charset="utf-8" src="script.js"></script>
 </body>
 </html>
