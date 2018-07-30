@@ -10,20 +10,20 @@
 	<div id="searchPanel">
 		<div id="searchInput">
 			<i class="fas fa-search"></i>
-			<input class="searchText" type="text" placeholder="Search..">
+			<input id="searcher" class="searchText" type="text" placeholder="Search.." onkeyup="Search()">
 		</div>
 	</div>
 	<div>
 		<div id="rightMenuPanel">
-		<div>
+		<div id="filterAll" onclick="UseFilter()">
 			<i class="fas fa-align-justify"></i>
 			<span>All</span>
 		</div>
-		<div>
+		<div id="filterActive" onclick="UseFilter('active')">
 			<i class="far fa-check-circle"></i>
 			<span>Active</span>
 		</div>
-		<div>
+		<div id="filterDone" onclick="UseFilter('done')">
 			<i class="fas fa-check-circle"></i>
 			<span>Done</span>
 		</div>
@@ -34,35 +34,19 @@
 		</div>
 		<div id="itemsPanel">
 		<ul id="itemsList">
-			<li id="item1">
-			test
-			<i class="fas fa-trash"></i>
-			<i class="fas fa-clone"></i>
-			<i class="fas fa-pen"></i>
-			</li>
-			<li>
-			test
-			<i class="fas fa-trash"></i>
-			<i class="fas fa-clone"></i>
-			<i class="fas fa-pen"></i>
-			</li>
-			<li>
-			test
-			<i class="fas fa-trash"></i>
-			<i class="fas fa-clone"></i>
-			<i class="fas fa-pen"></i>
-			</li>
+			
 		</ul>
 		</div>
 		<div id="editPanel">
 		<div>
-			<input id="title" type="text" placeholder="Title">
-			<textarea id="comment" rows="5" placeholder="Comment(optional)"></textarea>
-			<span class="button" onclick="Save()">
+			<input id="itemTitle" type="text" placeholder="Title" maxlength="25">
+			<input id="itemId" type="hidden">
+			<textarea id="itemComment" rows="5" placeholder="Comment(optional)"></textarea>
+			<span id="btnSave" class="button" onclick="Save()">
 			<i class="fas fa-save"></i>
 			Save
 			</span>
-			<span class="button">
+			<span class="button" onclick="Discard()">
 			<i class="fas fa-ban"></i>
 			Discard
 			</span>
