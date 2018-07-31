@@ -1,7 +1,10 @@
 "use strict";
 
+var list = document.getElementById("itemsList");
+
 function Save(item){
     let id = document.getElementById("itemId").value;
+
     if(id.length > 0){
         EditInList(id);
         document.getElementById("itemId").value = "";
@@ -9,16 +12,14 @@ function Save(item){
         if(item !== undefined){
             AddToList(item);
         } else {
-            let title = document.getElementById("itemTitle");
-            let comment = document.getElementById("itemComment");
+            let inputText = GetInputValue();
             item = {
                 id: id.value,
-                title: title.value,
-                comment: comment.value
+                title: inputText.title,
+                comment: inputText.comment
             }
-            title.value = "";
-            comment.value = "";
-        
+            
+            Discard();
             AddToList(item);
         }
     }
@@ -29,15 +30,16 @@ function AddToList(item){
         alert("Please write task title");
         return;
     } else {
-        let myList = document.getElementById("itemsList");
+        let myList = list;
+
         let myLi = document.createElement("li");
-        let myId = WriteId(item);
+        let myId = WriteId();
         let myText = document.createTextNode(item.title);
     
         myLi.setAttribute("id", myId);
         myLi.setAttribute("class", "active");
+
         SetControls(myLi, myId);
-        // myLi.setAttribute("onclick", "ToggleStatus(" + myId + ")");
     
         if(item.nodeName === "LI"){
             myText = document.createTextNode(item.innerText);
@@ -54,38 +56,35 @@ function AddToList(item){
 
 function EditInList(id){
     let myLi = document.getElementById(id);
-    let newTitle = document.getElementById("itemTitle");
-    let newComment = document.getElementById("itemComment");
+    let inputText = GetInputValue();
+    let newTitle = inputText.title;
+    let newComment = inputText.comment;
 
-    myLi.innerText = newTitle.value;
-    myLi.title = newComment.value;
+    myLi.innerText = newTitle;
+    myLi.title = newComment;
     SetControls(myLi, id);
     Discard();
 }
 
 function DeleteAll(){
-    let myList = document.getElementById("itemsList");
+    let myList = list;
     while (myList.childNodes.length > 0){
         myList.removeChild(myList.childNodes[0]);
     }
 }
 
-function ToggleStatus(item){
-    if(item.currentTarget.classList.contains("active")){
-        item.currentTarget.classList.remove("active");
-        item.currentTarget.classList.add("done");
-    } else {
-        item.currentTarget.classList.remove("done");
-        item.currentTarget.classList.add("active");
-    }
+function ToggleStatus(e){
+    e.currentTarget.classList.toggle("active");
+    e.currentTarget.classList.toggle("done");
 }
 
 function EditItem(e){
     e.stopPropagation();
     let item = e.currentTarget.parentElement;
     let id = document.getElementById("itemId");
-    let title = document.getElementById("itemTitle");
-    let comment = document.getElementById("itemComment");
+    let inputText = GetInputValue();
+    let title = inputText._title;
+    let comment = inputText._comment;
 
     item.classList.add("edited");
     title.value = item.innerText;
@@ -95,20 +94,20 @@ function EditItem(e){
 
 function CloneItem(e){
     e.stopPropagation();
-    debugger;
     let item = e.currentTarget.parentElement;
     Save(item);
 }
 
 function DeleteItem(e){
     let item = e.currentTarget.parentElement;
-    let myList = document.getElementById("itemsList");
+    let myList = list;
     myList.removeChild(item);
 }
 
 function Discard(){
-    let title = document.getElementById("itemTitle");
-    let comment = document.getElementById("itemComment");
+    let inputText = GetInputValue();
+    let title = inputText._title;
+    let comment = inputText._comment;
     let editedItems = document.getElementsByClassName("edited");
     for(let i = 0; i < editedItems.length; i++){
         editedItems[i].classList.remove("edited");
@@ -119,7 +118,7 @@ function Discard(){
 }
 
 function UseFilter(cond){
-    let myList = document.getElementById("itemsList");
+    let myList = list;
     let activeList = myList.getElementsByClassName("active");
     let doneList = myList.getElementsByClassName("done");
 
@@ -165,7 +164,7 @@ function UseFilter(cond){
 
 function Search(){
     let currentSearchCondition = document.getElementById("searcher");
-    let myList = document.getElementById("itemsList");
+    let myList = list;
 
     currentSearchCondition.value;
     for(let i = 0; i < myList.children.length; i++){
@@ -185,13 +184,10 @@ function SetControls(li){
 
     trash.setAttribute("class", "fas fa-trash");
     trash.addEventListener("click", DeleteItem, false);
-    // trash.setAttribute("onclick", "DeleteItem(" + id + ");");
     clone.setAttribute("class", "fas fa-clone");
     clone.addEventListener("click", CloneItem, false);
-    // clone.setAttribute("onclick", "CloneItem(" + id + ");");
     pen.setAttribute("class", "fas fa-pen");
     pen.addEventListener("click", EditItem, false);
-    // pen.setAttribute("onclick", "EditItem(" + id + ");");
 
     li.appendChild(trash);
     li.appendChild(clone);
@@ -208,4 +204,19 @@ function WriteId(){
     }
   
     return myId;
+}
+
+function GetInputValue(){
+    let item = {
+        title: "",
+        comment: "",
+        _title: "",
+        _comment: ""
+    };
+    item._title = document.getElementById("itemTitle");
+    item._comment = document.getElementById("itemComment");
+    item.title = document.getElementById("itemTitle").value;
+    item.comment = document.getElementById("itemComment").value;
+
+    return item;
 }
