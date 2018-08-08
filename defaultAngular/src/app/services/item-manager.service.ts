@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { TodoItems, TodoItem } from '../models/items-list';
-import { ComponentManagerService } from './component-manager.service';
 
 @Injectable({
   providedIn: 'root'
@@ -20,24 +19,33 @@ export class ItemManagerService {
     return result;
   }
 
-  saveItem(item: TodoItem) : TodoItems {
+  saveItem(item: TodoItem, cloned?: boolean) : TodoItems {
     let result: TodoItems;
 
-    if(item.status === undefined){
-      item.status = true;
+    if(item.id === "" || cloned){
+      this.itemsList.unshift({
+        id: this.writeId(),
+        title: item.title,
+        comment: item.comment,
+        status: item.status
+      });
+    } else {
+      let editedItem = this.itemsList.find(x => x.id == item.id);
+      let index = this.itemsList.indexOf(editedItem);
+      this.itemsList[index] = {
+        id: item.id,
+        title: item.title,
+        comment: item.comment,
+        status: item.status
+      };
     }
 
-    this.itemsList.unshift({
-      id: this.writeId(),
-      title: item.title,
-      comment: item.comment,
-      status: item.status
-    });
     result = this.itemsList;
 
     return result;
   }
 
+  //redundant
   editItem(item: TodoItem) : TodoItem {
     let result: TodoItem;
 
@@ -55,6 +63,14 @@ export class ItemManagerService {
         this.itemsList.splice(index, 1);
       }
     }
+
+    return result;
+  }
+
+  deleteAll() : TodoItems {
+    let result: TodoItems;
+
+    this.itemsList.splice(0, this.itemsList.length);
 
     return result;
   }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoItems } from '../../models/items-list';
-import { ItemManagerService } from '../../services/item-manager.service';
 import { FilterService } from '../../services/filter.service';
+import { ComponentManagerService } from '../../services/component-manager.service';
 
 @Component({
   selector: 'app-search',
@@ -12,10 +12,11 @@ export class SearchComponent implements OnInit {
   itemsList;
 
   search(searchTerm) : void {
-    this.filter.search(searchTerm);
+    let newList = this.fService.search(searchTerm);
+    this.cmService.transferList(newList);
   }
 
-  constructor(private tiList: TodoItems, private filter: FilterService) {
+  constructor(private tiList: TodoItems, private fService: FilterService, private cmService: ComponentManagerService) {
     this.itemsList = tiList.todoItems;
   }
 

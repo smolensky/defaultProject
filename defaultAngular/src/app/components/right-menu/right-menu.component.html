@@ -1,17 +1,17 @@
 <div id="rightMenuPanel">
-    <div id="filterAll" onclick="UseFilter()">
+    <div id="filterAll" (click)="UseFilter()">
       <i class="fas fa-align-justify"></i>
       <span>All</span>
     </div>
-    <div id="filterActive" onclick="UseFilter('active')">
+    <div id="filterActive" (click)="UseFilter(true)">
       <i class="far fa-check-circle"></i>
       <span>Active</span>
     </div>
-    <div id="filterDone" onclick="UseFilter('done')">
+    <div id="filterDone" (click)="UseFilter(false)">
       <i class="fas fa-check-circle"></i>
       <span>Done</span>
     </div>
-    <div onclick="DeleteAll()">
+    <div (click)="DeleteAll()">
       <i class="fas fa-trash"></i>
       <span>Clear</span>
     </div>

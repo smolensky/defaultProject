@@ -17,8 +17,12 @@ export class FilterService {
 
   filterByStatus(status: boolean) : TodoItems {
     let result: TodoItems;
-
-    result = this.myList.filter(x => x.status === status);
+    
+    if(status === undefined){
+      return this.myList;
+    } else {
+      result = this.myList.filter(x => x.status === status);
+    }
 
     return result;
   }

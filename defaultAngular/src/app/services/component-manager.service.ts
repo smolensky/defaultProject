@@ -1,19 +1,24 @@
 import { Injectable } from '@angular/core';
-import { EditPanelComponent } from '../components/edit-panel/edit-panel.component';
 import { TodoItem, TodoItems } from '../models/items-list';
-import { ItemsPanelComponent } from '../components/items-panel/items-panel.component';
+import { Subject } from '../../../node_modules/rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ComponentManagerService {
-  updateEditPanel(item: TodoItem) : void {
-    this.editPanel.updateComponent(item);
+  private itemSource = new Subject<any>();
+  private listSource = new Subject<any>();
+
+  componentMethodCalled1$ = this.itemSource.asObservable();
+  componentMethodCalled2$ = this.listSource.asObservable();
+
+  transferItem(item: TodoItem) {
+    this.itemSource.next(item);
   }
 
-  updateItemsPanel(items: TodoItems) : void {
-    this.itemsPanel.updateList(items);
+  transferList(items: TodoItems) {
+    this.listSource.next(items);
   }
 
-  constructor(private editPanel: EditPanelComponent, private itemsPanel: ItemsPanelComponent) { }
+  constructor() { }
 }
