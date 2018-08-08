@@ -1,5 +1,3 @@
-import { TodoItem } from './edit-panel/edit-panel.component';
-
 export class TodoItems{
   todoItems = [
     { id: 'test1', title: 'Mr. Nice', comment: 'asdfasdf', status: true },
@@ -13,4 +11,11 @@ export class TodoItems{
     { id: 'test9', title: 'Mr. Nice', comment: 'asdfasdf', status: true },
     { id: 'test10', title: 'Mr. Nice', comment: 'asdfasdf', status: true }
   ];
+}
+
+export class TodoItem {
+  id: string;
+  title: string;
+  comment: string;
+  status: boolean;
 }

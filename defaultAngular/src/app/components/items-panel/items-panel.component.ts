@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TodoItems } from '../items-list';
-import { EditPanelComponent, TodoItem } from '../edit-panel/edit-panel.component';
-import { ItemManagerService } from '../item-manager.service';
+import { TodoItems, TodoItem } from '../../models/items-list';
+import { ItemManagerService } from '../../services/item-manager.service';
 
 @Component({
   selector: 'app-items-panel',
@@ -14,6 +13,7 @@ export class ItemsPanelComponent implements OnInit {
   edit(item: TodoItem) : void {
     event.stopPropagation();
     this.imService.editItem(item);
+    
   }
   
   clone(item: TodoItem) : void {
@@ -32,6 +32,10 @@ export class ItemsPanelComponent implements OnInit {
     } else {
       item.status = true;
     }
+  }
+
+  updateList(items: TodoItems) : void {
+
   }
 
   constructor(private tiList: TodoItems, private imService: ItemManagerService) {

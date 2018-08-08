@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { TodoItems } from '../items-list';
-import { ItemManagerService } from '../item-manager.service';
+import { TodoItems } from '../../models/items-list';
+import { ItemManagerService } from '../../services/item-manager.service';
+import { FilterService } from '../../services/filter.service';
 
 @Component({
   selector: 'app-search',
@@ -14,7 +15,7 @@ export class SearchComponent implements OnInit {
     this.filter.search(searchTerm);
   }
 
-  constructor(private filter: ItemManagerService, private tiList: TodoItems) {
+  constructor(private tiList: TodoItems, private filter: FilterService) {
     this.itemsList = tiList.todoItems;
   }
 

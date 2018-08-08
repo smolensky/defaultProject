@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
-import { TodoItem } from './edit-panel/edit-panel.component';
-import { TodoItems } from './items-list';
+import { TodoItems, TodoItem } from '../models/items-list';
+import { ComponentManagerService } from './component-manager.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ItemManagerService {
-  id: string = this.writeId();
   itemsList;
 
   writeId() : string {
@@ -43,7 +42,7 @@ export class ItemManagerService {
     let result: TodoItem;
 
     result = this.itemsList.find(x => x.id == item.id);
-
+    
     return result;
   }
 
@@ -58,14 +57,6 @@ export class ItemManagerService {
     }
 
     return result;
-  }
-
-  search(searchTerm: string) : TodoItems {
-    let result: TodoItems;
-debugger;
-    result = this.itemsList.filter(x => x.title.includes(searchTerm));
-
-    return this.itemsList = result;
   }
 
   constructor(private list: TodoItems) {

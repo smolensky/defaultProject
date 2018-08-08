@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { TodoItems } from './items-list';
+import { TodoItems } from '../models/items-list';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +9,7 @@ export class FilterService {
 
   search(searchTerm: string) : TodoItems {
     let result: TodoItems;
-debugger;
+
     result = this.myList.filter(x => x.title.includes(searchTerm));
 
     return result;
