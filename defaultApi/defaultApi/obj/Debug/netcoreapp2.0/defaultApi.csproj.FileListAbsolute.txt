@@ -1,0 +1,11 @@
+D:\proj\defaultProject\defaultApi\defaultApi\bin\Debug\netcoreapp2.0\defaultApi.deps.json
+D:\proj\defaultProject\defaultApi\defaultApi\bin\Debug\netcoreapp2.0\defaultApi.runtimeconfig.json
+D:\proj\defaultProject\defaultApi\defaultApi\bin\Debug\netcoreapp2.0\defaultApi.runtimeconfig.dev.json
+D:\proj\defaultProject\defaultApi\defaultApi\bin\Debug\netcoreapp2.0\defaultApi.dll
+D:\proj\defaultProject\defaultApi\defaultApi\bin\Debug\netcoreapp2.0\defaultApi.pdb
+D:\proj\defaultProject\defaultApi\defaultApi\obj\Debug\netcoreapp2.0\defaultApi.csprojAssemblyReference.cache
+D:\proj\defaultProject\defaultApi\defaultApi\obj\Debug\netcoreapp2.0\defaultApi.csproj.CoreCompileInputs.cache
+D:\proj\defaultProject\defaultApi\defaultApi\obj\Debug\netcoreapp2.0\defaultApi.AssemblyInfoInputs.cache
+D:\proj\defaultProject\defaultApi\defaultApi\obj\Debug\netcoreapp2.0\defaultApi.AssemblyInfo.cs
+D:\proj\defaultProject\defaultApi\defaultApi\obj\Debug\netcoreapp2.0\defaultApi.dll
+D:\proj\defaultProject\defaultApi\defaultApi\obj\Debug\netcoreapp2.0\defaultApi.pdb
