@@ -9,15 +9,13 @@ import { ComponentManagerService } from '../../services/component-manager.servic
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  itemsList;
-
   search(searchTerm) : void {
     let newList = this.filter.search(searchTerm);
     this.componentManager.transferList(newList);
   }
 
-  constructor(private tiList: TodoItems, private filter: FilterService, private componentManager: ComponentManagerService) {
-    this.itemsList = tiList.TodoItems;
+  constructor(private filter: FilterService, 
+    private componentManager: ComponentManagerService) {
   }
 
   ngOnInit() {

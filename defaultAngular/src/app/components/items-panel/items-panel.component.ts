@@ -36,11 +36,9 @@ export class ItemsPanelComponent implements OnInit {
     this.itemsList = items;
   }
 
-  constructor(private tiList: TodoItems, 
-      private itemManager: ItemManagerService, 
+  constructor(private itemManager: ItemManagerService, 
       private componentManager: ComponentManagerService, 
       private dataManager: DataManagerService) {
-    this.itemsList = tiList.TodoItems;
   }
 
   ngOnInit() {

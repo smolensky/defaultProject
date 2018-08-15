@@ -1,33 +1,46 @@
 import { Injectable } from '@angular/core';
-import { TodoItems } from '../dataLayer/data-manager.service';
+import { TodoItems, DataManagerService } from '../dataLayer/data-manager.service';
+import { ComponentManagerService } from './component-manager.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FilterService {
-  myList;
-
   search(searchTerm: string) : TodoItems {
-    let result: TodoItems;
+    let result;
 
-    result = this.myList.filter(x => x.title.includes(searchTerm));
+    this.dataManager.getAllValues()
+    .subscribe(val => this.componentManager.transferList(this.useTerm(searchTerm, val)));
 
     return result;
   }
 
   filterByStatus(status: boolean) : TodoItems {
-    let result: TodoItems;
+    let result;
     
     if(status === undefined){
-      return this.myList;
+      this.search("");
     } else {
-      result = this.myList.filter(x => x.status === status);
+      this.dataManager.getAllValues()
+      .subscribe(val => this.componentManager.transferList(this.useStatus(status, val)));
     }
 
     return result;
   }
 
-  constructor(private list: TodoItems) {
-    this.myList = list.TodoItems;
+  useTerm(searchTerm, val) {
+    let result = val.filter(x => x.title.includes(searchTerm));
+
+    return result;
+  }
+
+  useStatus(searchTerm, val) {
+    let result = val.filter(x => x.status == searchTerm);
+
+    return result;
+  }
+
+  constructor(private dataManager: DataManagerService, 
+    private componentManager: ComponentManagerService) {
   }
 }

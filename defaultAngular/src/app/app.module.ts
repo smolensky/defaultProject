@@ -9,6 +9,7 @@ import { RightMenuComponent } from './components/right-menu/right-menu.component
 import { EditPanelComponent } from './components/edit-panel/edit-panel.component';
 import { ItemsPanelComponent } from './components/items-panel/items-panel.component';
 import { TodoItems, TodoItem } from './dataLayer/data-manager.service';
+import { CategoriesComponent } from './components/categories/categories.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { TodoItems, TodoItem } from './dataLayer/data-manager.service';
     SearchComponent,
     RightMenuComponent,
     EditPanelComponent,
-    ItemsPanelComponent
+    ItemsPanelComponent,
+    CategoriesComponent
   ],
   imports: [
     BrowserModule,
