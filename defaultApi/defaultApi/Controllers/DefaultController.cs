@@ -28,6 +28,17 @@ namespace defaultApi.Controllers
             return Ok(model);
         }
 
+        // GET: api/<controller>/<query>
+        [HttpGet("{term}")]
+        public IActionResult Get(string term)
+        {
+            var model = _context.Set<Category>();
+
+            return Ok(model);
+        }
+
+
+
         // POST api/<controller>
         [HttpPost]
         public IActionResult Post([FromBody]TodoItem value)
@@ -48,7 +59,6 @@ namespace defaultApi.Controllers
             temp.Status = value.Status;
             temp.Id = value.Id;
             temp.Title = value.Title;
-            temp.Comment = value.Comment;
             _context.SaveChanges();
 
             return Ok(model);

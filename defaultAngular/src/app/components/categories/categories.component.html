@@ -1,5 +1,6 @@
 <div id="categoriesPanel">
-  <div *ngFor="let category of categories" (click)="showCategorised()">
+  <div *ngFor="let category of categoriesList" (click)="showCategorised(category)">
+    <i class="fas fa-bookmark"></i>
     <span>{{category.title}}</span>
   </div>
 </div>

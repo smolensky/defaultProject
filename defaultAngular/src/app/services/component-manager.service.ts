@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { TodoItem, TodoItems } from '../dataLayer/data-manager.service';
+import { TodoItem, TodoItems, Category } from '../dataLayer/data-manager.service';
 import { Subject } from 'rxjs';
 import { DataManagerService } from '../dataLayer/data-manager.service';
 
@@ -9,9 +9,11 @@ import { DataManagerService } from '../dataLayer/data-manager.service';
 export class ComponentManagerService {
   private itemSource = new Subject<any>();
   private listSource = new Subject<any>();
+  private categoriesSource = new Subject<any>();
 
-  componentMethodCalled1$ = this.itemSource.asObservable();
-  componentMethodCalled2$ = this.listSource.asObservable();
+  itemSourceMethodCalled$ = this.itemSource.asObservable();
+  listSourceMethodCalled$ = this.listSource.asObservable();
+  categoriesSourceMethodCalled$ = this.categoriesSource.asObservable();
 
   transferItem(item: TodoItem) {
     this.itemSource.next(item);
@@ -19,6 +21,10 @@ export class ComponentManagerService {
 
   transferList(items: TodoItems) {
     this.listSource.next(items);
+  }
+
+  transferCategories(cat: Category) {
+    this.categoriesSource.next(cat);
   }
 
   constructor() { }

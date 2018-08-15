@@ -9,7 +9,7 @@ export class FilterService {
   search(searchTerm: string) : TodoItems {
     let result;
 
-    this.dataManager.getAllValues()
+    this.dataManager.getAllItems()
     .subscribe(val => this.componentManager.transferList(this.useTerm(searchTerm, val)));
 
     return result;
@@ -21,7 +21,7 @@ export class FilterService {
     if(status === undefined){
       this.search("");
     } else {
-      this.dataManager.getAllValues()
+      this.dataManager.getAllItems()
       .subscribe(val => this.componentManager.transferList(this.useStatus(status, val)));
     }
 

@@ -52,7 +52,7 @@ export class EditPanelComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.componentManager.componentMethodCalled1$.subscribe(
+    this.componentManager.itemSourceMethodCalled$.subscribe(
       (item) => {
         this.updateComponent(item);
       }

@@ -43,6 +43,6 @@ export class ItemManagerService {
   }
 
   constructor(private list: TodoItems, private dataManager: DataManagerService, private componentManager: ComponentManagerService) {
-    this.dataManager.getAllValues().subscribe(val => this.componentManager.transferList(val));
+    this.dataManager.getAllItems().subscribe(val => this.componentManager.transferList(val));
   }
 }

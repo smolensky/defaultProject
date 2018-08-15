@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, HostListener } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TodoItems, TodoItem, DataManagerService } from '../../dataLayer/data-manager.service';
 import { ItemManagerService } from '../../services/item-manager.service';
 import { ComponentManagerService } from '../../services/component-manager.service';
@@ -42,7 +42,7 @@ export class ItemsPanelComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.componentManager.componentMethodCalled2$.subscribe(
+    this.componentManager.listSourceMethodCalled$.subscribe(
       (items) => {
         this.updateItemsList(items);
       }

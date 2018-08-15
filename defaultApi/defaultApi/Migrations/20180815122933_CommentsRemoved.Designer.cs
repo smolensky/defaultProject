@@ -11,9 +11,10 @@ using System;
 namespace defaultApi.Migrations
 {
     [DbContext(typeof(defaultModel))]
-    partial class defaultModelModelSnapshot : ModelSnapshot
+    [Migration("20180815122933_CommentsRemoved")]
+    partial class CommentsRemoved
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

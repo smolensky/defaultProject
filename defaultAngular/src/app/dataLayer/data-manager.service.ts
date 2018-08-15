@@ -10,10 +10,18 @@ import { ComponentManagerService } from '../services/component-manager.service';
   providedIn: 'root'
 })
 export class DataManagerService {
-  getAllValues() : Observable<any> {
+  getAllItems() : Observable<any> {
     let result: Observable<any>;
 
     result = this.http.get('http://localhost:58468/api/default', { observe: 'body' });
+
+    return result;
+  }
+
+  getAllCategories() : Observable<any> {
+    let result : Observable<any>;
+
+    result = this.http.get('http://localhost:58468/api/default/some');
 
     return result;
   }
@@ -53,6 +61,11 @@ export class TodoItem {
   title;
   comment;
   status;
+}
+
+export class Category {
+  id;
+  title;
 }
 
 const httpOptions = {
