@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { TodoItems, TodoItem } from '../models/items-list';
+import { TodoItems, TodoItem } from '../dataLayer/data-manager.service';
+import { DataManagerService } from '../dataLayer/data-manager.service';
+import { ComponentManagerService } from './component-manager.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ItemManagerService {
-  itemsList;
-
   writeId() : string {
     let result: string = "_";
 
@@ -22,60 +22,27 @@ export class ItemManagerService {
   saveItem(item: TodoItem, cloned?: boolean) : TodoItems {
     let result: TodoItems;
 
-    if(item.id === "" || cloned){
-      this.itemsList.unshift({
-        id: this.writeId(),
-        title: item.title,
-        comment: item.comment,
-        status: item.status
-      });
+    if(!(item.id.length > 0) || cloned){
+      this.dataManager.saveItem(this.writeId(), item)
+      .subscribe(val => this.componentManager.transferList(val));
     } else {
-      let editedItem = this.itemsList.find(x => x.id == item.id);
-      let index = this.itemsList.indexOf(editedItem);
-      this.itemsList[index] = {
-        id: item.id,
-        title: item.title,
-        comment: item.comment,
-        status: item.status
-      };
-    }
-
-    result = this.itemsList;
-
-    return result;
-  }
-
-  //redundant
-  editItem(item: TodoItem) : TodoItem {
-    let result: TodoItem;
-
-    result = this.itemsList.find(x => x.id == item.id);
-    
-    return result;
-  }
-
-  deleteItem(item: TodoItem) : TodoItems {
-    let result: TodoItems;
-
-    for(let i = 0; i < this.itemsList.length; i++){
-      if(this.itemsList[i].id === item.id){
-        let index = this.itemsList.indexOf(this.itemsList[i]);
-        this.itemsList.splice(index, 1);
-      }
+      this.dataManager.editItem(item)
+      .subscribe(val => this.componentManager.transferList(val));
     }
 
     return result;
   }
 
-  deleteAll() : TodoItems {
-    let result: TodoItems;
-
-    this.itemsList.splice(0, this.itemsList.length);
-
-    return result;
+  deleteItem(item: TodoItem) : void {
+    this.dataManager.deleteItem(item)
+      .subscribe(val => this.componentManager.transferList(val));
   }
 
-  constructor(private list: TodoItems) {
-    this.itemsList = list.todoItems;
+  deleteAll() : void {
+    alert("Not implemented");
+  }
+
+  constructor(private list: TodoItems, private dataManager: DataManagerService, private componentManager: ComponentManagerService) {
+    this.dataManager.getAllValues().subscribe(val => this.componentManager.transferList(val));
   }
 }

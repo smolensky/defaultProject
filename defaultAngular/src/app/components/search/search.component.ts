@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TodoItems } from '../../models/items-list';
+import { TodoItems } from '../../dataLayer/data-manager.service';
 import { FilterService } from '../../services/filter.service';
 import { ComponentManagerService } from '../../services/component-manager.service';
 
@@ -12,12 +12,12 @@ export class SearchComponent implements OnInit {
   itemsList;
 
   search(searchTerm) : void {
-    let newList = this.fService.search(searchTerm);
-    this.cmService.transferList(newList);
+    let newList = this.filter.search(searchTerm);
+    this.componentManager.transferList(newList);
   }
 
-  constructor(private tiList: TodoItems, private fService: FilterService, private cmService: ComponentManagerService) {
-    this.itemsList = tiList.todoItems;
+  constructor(private tiList: TodoItems, private filter: FilterService, private componentManager: ComponentManagerService) {
+    this.itemsList = tiList.TodoItems;
   }
 
   ngOnInit() {

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { TodoItem, TodoItems } from '../models/items-list';
+import { TodoItem, TodoItems } from '../dataLayer/data-manager.service';
 import { Subject } from 'rxjs';
+import { DataManagerService } from '../dataLayer/data-manager.service';
 
 @Injectable({
   providedIn: 'root'

@@ -8,8 +8,7 @@ import { SearchComponent } from './components/search/search.component';
 import { RightMenuComponent } from './components/right-menu/right-menu.component';
 import { EditPanelComponent } from './components/edit-panel/edit-panel.component';
 import { ItemsPanelComponent } from './components/items-panel/items-panel.component';
-import { TodoItems, TodoItem } from './models/items-list';
-import { ApiComponent } from './components/api/api.component';
+import { TodoItems, TodoItem } from './dataLayer/data-manager.service';
 
 @NgModule({
   declarations: [
@@ -17,8 +16,7 @@ import { ApiComponent } from './components/api/api.component';
     SearchComponent,
     RightMenuComponent,
     EditPanelComponent,
-    ItemsPanelComponent,
-    ApiComponent
+    ItemsPanelComponent
   ],
   imports: [
     BrowserModule,

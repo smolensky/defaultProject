@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemManagerService } from '../../services/item-manager.service';
-import { TodoItems, TodoItem } from '../../models/items-list';
+import { TodoItems, TodoItem } from '../../dataLayer/data-manager.service';
 import { ComponentManagerService } from '../../services/component-manager.service';
 
 @Component({
@@ -23,7 +23,7 @@ export class EditPanelComponent implements OnInit {
     }
     let updatedList = this.itemManager.saveItem(item);
 
-    this.cmService.transferList(updatedList);
+    // this.componentManager.transferList(updatedList);
     this.todoItem.id = "";
     this.todoItem.title = "";
     this.todoItem.comment = "";
@@ -48,11 +48,11 @@ export class EditPanelComponent implements OnInit {
     }
   }
 
-  constructor(private itemManager: ItemManagerService, private cmService: ComponentManagerService) {
+  constructor(private itemManager: ItemManagerService, private componentManager: ComponentManagerService) {
   }
 
   ngOnInit() {
-    this.cmService.componentMethodCalled1$.subscribe(
+    this.componentManager.componentMethodCalled1$.subscribe(
       (item) => {
         this.updateComponent(item);
       }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { TodoItems } from '../models/items-list';
+import { TodoItems } from '../dataLayer/data-manager.service';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +28,6 @@ export class FilterService {
   }
 
   constructor(private list: TodoItems) {
-    this.myList = list.todoItems;
+    this.myList = list.TodoItems;
   }
 }

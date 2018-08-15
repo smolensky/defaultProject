@@ -41,7 +41,7 @@ namespace defaultApi
             }
 
             app.UseCors(
-            options => options.AllowAnyOrigin()
+            options => options.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()
             );
 
 

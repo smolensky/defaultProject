@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, HostListener } from '@angular/core';
-import { TodoItems, TodoItem } from '../../models/items-list';
+import { TodoItems, TodoItem, DataManagerService } from '../../dataLayer/data-manager.service';
 import { ItemManagerService } from '../../services/item-manager.service';
 import { ComponentManagerService } from '../../services/component-manager.service';
 
@@ -13,34 +13,38 @@ export class ItemsPanelComponent implements OnInit {
 
   edit(item: TodoItem) : void {
     event.stopPropagation();
-    this.cmService.transferItem(item);
-    // this.imService.editItem(item);
+    this.componentManager.transferItem(item);
   }
   
   clone(item: TodoItem) : void {
     event.stopPropagation();
-    this.imService.saveItem(item, true);
+    this.itemManager.saveItem(item, true);
   }
   
   delete(item: TodoItem) : void {
     event.stopPropagation();
-    this.imService.deleteItem(item);
+    this.itemManager.deleteItem(item);
   }
 
   toggleStatus(item: TodoItem) : void {
     item.status = !item.status;
+    this.dataManager.editItem(item)
+    .subscribe(val => this.componentManager.transferList(val));
   }
 
   updateItemsList(items: TodoItems) : void {
     this.itemsList = items;
   }
 
-  constructor(private tiList: TodoItems, private imService: ItemManagerService, private cmService: ComponentManagerService) {
-    this.itemsList = tiList.todoItems;
+  constructor(private tiList: TodoItems, 
+      private itemManager: ItemManagerService, 
+      private componentManager: ComponentManagerService, 
+      private dataManager: DataManagerService) {
+    this.itemsList = tiList.TodoItems;
   }
 
   ngOnInit() {
-    this.cmService.componentMethodCalled2$.subscribe(
+    this.componentManager.componentMethodCalled2$.subscribe(
       (items) => {
         this.updateItemsList(items);
       }
