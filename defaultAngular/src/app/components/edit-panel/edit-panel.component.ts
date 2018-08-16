@@ -12,7 +12,6 @@ export class EditPanelComponent implements OnInit {
   todoItem: TodoItem = {
     id: "",
     title: "",
-    comment: "",
     status: true
   };
  
@@ -26,14 +25,12 @@ export class EditPanelComponent implements OnInit {
     // this.componentManager.transferList(updatedList);
     this.todoItem.id = "";
     this.todoItem.title = "";
-    this.todoItem.comment = "";
     this.todoItem.status = true;
   }
 
   discard() : void {
     this.todoItem.id = "";
     this.todoItem.title = "";
-    this.todoItem.comment = "";
     this.todoItem.status = true;
   }
 
@@ -42,7 +39,6 @@ export class EditPanelComponent implements OnInit {
       this.todoItem = {
         id: item.id,
         title: item.title,
-        comment: item.comment,
         status: item.status
       };
     }

@@ -1,6 +1,6 @@
 <div id="itemsPanel">
     <ul id="itemsList">
-        <li *ngFor="let item of itemsList" id="{{item.id}}" [ngClass]="{ 'active' : item.status, 'done' : !item.status }" title="{{item.comment}}" (click)="toggleStatus(item)">
+        <li *ngFor="let item of itemsList" id="{{item.id}}" [ngClass]="{ 'active' : item.status, 'done' : !item.status }" (click)="toggleStatus(item)">
             <i class="fas fa-trash" (click)="delete(item)"></i>
             <i class="fas fa-clone" (click)="clone(item)"></i>
             <i class="fas fa-pen" (click)="edit(item)"></i>

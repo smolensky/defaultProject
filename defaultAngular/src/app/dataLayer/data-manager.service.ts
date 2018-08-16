@@ -59,7 +59,6 @@ export class TodoItems {
 export class TodoItem {
   id;
   title;
-  comment;
   status;
 }
 
