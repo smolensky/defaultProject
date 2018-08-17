@@ -25,10 +25,8 @@ export class EditPanelComponent implements OnInit {
       alert("You can't let title empty");
       return;
     }
-    debugger;
-    let updatedList = this.itemManager.saveItem(item, cat);
+    this.itemManager.saveItem(item, cat);
 
-    // this.componentManager.transferList(updatedList);
     this.todoItem.id = "";
     this.todoItem.title = "";
     this.todoItem.status = true;

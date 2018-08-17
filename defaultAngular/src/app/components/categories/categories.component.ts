@@ -19,8 +19,8 @@ export class CategoriesComponent implements OnInit {
   }
 
   constructor(private dataManager: DataManagerService,
-  private componentManager: ComponentManagerService) {
-    this.dataManager.getAllCategories().subscribe(x => this.componentManager.transferCategories(x));
+    private componentManager: ComponentManagerService) {
+      this.dataManager.getAllCategories().subscribe(x => this.componentManager.transferCategories(x));
   }
 
   ngOnInit() {

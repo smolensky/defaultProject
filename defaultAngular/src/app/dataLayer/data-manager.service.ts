@@ -26,8 +26,7 @@ export class DataManagerService {
     return result;
   }
 
-  saveItem(id, item) : Observable<any> {
-    item.id = id;
+  saveItem(item) : Observable<any> {
     let result = this.http.post('http://localhost:58468/api/default', item, httpOptions)
     
     return result;
@@ -60,6 +59,7 @@ export class TodoItem {
   id;
   title;
   status;
+  category?: Category;
 }
 
 export class Category {
