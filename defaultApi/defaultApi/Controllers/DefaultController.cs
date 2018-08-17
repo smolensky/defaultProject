@@ -37,13 +37,20 @@ namespace defaultApi.Controllers
             return Ok(model);
         }
 
-
-
         // POST api/<controller>
         [HttpPost]
         public IActionResult Post([FromBody]TodoItem value)
         {
             var model = _context.TodoItems;
+            var catModel = _context.Categories;
+            if (catModel.FirstOrDefault(x => x.Id == value.CategoryId) != null)
+            {
+                var category = new Category() {
+                    Id = value.CategoryId,
+                    Title = value.Category.Title
+                };
+                catModel.Add(category);
+            }
             model.Add(value);
             _context.SaveChanges();
 

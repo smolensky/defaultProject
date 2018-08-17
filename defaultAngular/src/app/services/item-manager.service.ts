@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { TodoItems, TodoItem } from '../dataLayer/data-manager.service';
+import { TodoItems, TodoItem, Category } from '../dataLayer/data-manager.service';
 import { DataManagerService } from '../dataLayer/data-manager.service';
 import { ComponentManagerService } from './component-manager.service';
 
@@ -19,9 +19,9 @@ export class ItemManagerService {
     return result;
   }
 
-  saveItem(item: TodoItem, cloned?: boolean) : TodoItems {
+  saveItem(item: TodoItem, cat: Category, cloned?: boolean) : TodoItems {
     let result: TodoItems;
-
+debugger;
     if(!(item.id.length > 0) || cloned){
       this.dataManager.saveItem(this.writeId(), item)
       .subscribe(val => this.componentManager.transferList(val));

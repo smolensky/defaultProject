@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemManagerService } from '../../services/item-manager.service';
-import { TodoItems, TodoItem } from '../../dataLayer/data-manager.service';
+import { TodoItems, TodoItem, Category } from '../../dataLayer/data-manager.service';
 import { ComponentManagerService } from '../../services/component-manager.service';
 
 @Component({
@@ -14,18 +14,25 @@ export class EditPanelComponent implements OnInit {
     title: "",
     status: true
   };
- 
-  saveItem(item: TodoItem) : void {
+
+  category: Category = {
+    id: "",
+    title: ""
+  };
+
+  saveItem(item: TodoItem, cat: Category) {
     if(item.title.length === 0){
       alert("You can't let title empty");
       return;
     }
-    let updatedList = this.itemManager.saveItem(item);
+    debugger;
+    let updatedList = this.itemManager.saveItem(item, cat);
 
     // this.componentManager.transferList(updatedList);
     this.todoItem.id = "";
     this.todoItem.title = "";
     this.todoItem.status = true;
+    this.category.title = "";
   }
 
   discard() : void {
@@ -34,7 +41,7 @@ export class EditPanelComponent implements OnInit {
     this.todoItem.status = true;
   }
 
-  updateComponent(item: TodoItem) : void {
+  updateComponent(item: TodoItem) {
     if(item !== undefined){
       this.todoItem = {
         id: item.id,

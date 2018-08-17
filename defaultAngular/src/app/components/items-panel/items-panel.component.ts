@@ -18,7 +18,7 @@ export class ItemsPanelComponent implements OnInit {
   
   clone(item: TodoItem) : void {
     event.stopPropagation();
-    this.itemManager.saveItem(item, true);
+    this.itemManager.saveItem(item, null, true);
   }
   
   delete(item: TodoItem) : void {

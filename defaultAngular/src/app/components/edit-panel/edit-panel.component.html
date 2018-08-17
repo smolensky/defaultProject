@@ -2,8 +2,8 @@
     <div>
       <input #itemTitle [(ngModel)]="todoItem.title" type="text" placeholder="Title" maxlength="25" required>
       <input #itemId [(ngModel)]="todoItem.id" type="hidden">
-      <!-- <textarea #itemComment [(ngModel)]="todoItem.comment" rows="5" placeholder="Comment(optional)"></textarea> -->
-      <span id="btnSave" class="button" (click)="saveItem(todoItem)">
+      <input #itemCategory [(ngModel)]="category.title" placeholder="Category">
+      <span id="btnSave" class="button" (click)="saveItem(todoItem, category)">
       <i class="fas fa-save"></i>
       Save
       </span>
