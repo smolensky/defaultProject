@@ -10,7 +10,7 @@ import { ComponentManagerService } from '../services/component-manager.service';
   providedIn: 'root'
 })
 export class DataManagerService {
-  getAllItems() : Observable<any> {
+  getAllItems() : Observable<TodoItems> {
     let result: Observable<any>;
 
     result = this.http.get('http://localhost:58468/api/default', { observe: 'body' });
@@ -52,7 +52,7 @@ export class DataManagerService {
 }
 
 export class TodoItems {
-  TodoItems;
+  TodoItems: Array<TodoItem>;
 }
 
 export class TodoItem {

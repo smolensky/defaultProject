@@ -10,6 +10,8 @@ using Microsoft.EntityFrameworkCore;
 using defaultApi.Models;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using defaultApi.UtilityInterfaces;
+using defaultApi.Utilities;
 
 namespace defaultApi
 {
@@ -25,6 +27,9 @@ namespace defaultApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IUtility, Utility>();
+            services.AddScoped<IDefaultUtility, DefaultUtility>();
+            services.AddScoped<ICategoryUtility, CategoryUtility>();
             services.AddCors();
             services.AddMvc();
 
