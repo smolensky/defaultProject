@@ -22,13 +22,11 @@ export class ItemManagerService {
   saveItem(item: TodoItem, cat: Category, cloned?: boolean) : TodoItems {
     let result: TodoItems;
 
-    if(cat.title.length > 0){
-      debugger;
-      this.dataManager.getAllCategories()
-      .subscribe(x => this.checkCategoryExistance(x, cat));
-    }
-
     item.category = cat;
+
+    this.dataManager.saveCategory(cat)
+      .subscribe(val => this.componentManager.transferCategories(val));
+
     if(!(item.id.length > 0) || cloned){
       this.dataManager.saveItem(item)
       .subscribe(val => this.componentManager.transferList(val));
@@ -38,15 +36,6 @@ export class ItemManagerService {
     }
 
     return result;
-  }
-
-  private checkCategoryExistance(catList, cat: Category) {
-    debugger;
-    if(catList.title == cat.title){
-      cat.id = catList.id;
-    } else {
-      cat.id = this.writeId();
-    }
   }
 
   deleteItem(item: TodoItem) : void {

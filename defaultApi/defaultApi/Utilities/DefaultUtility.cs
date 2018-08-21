@@ -19,14 +19,21 @@ namespace defaultApi.Utilities
     public class DefaultUtility : IDefaultUtility
     {
         private IUtility _utility;
-        public DefaultUtility(IUtility utility)
+        private ICategoryUtility _categoryUtility;
+        public DefaultUtility(IUtility utility, ICategoryUtility categoryUtility)
         {
             _utility = utility;
+            _categoryUtility = categoryUtility;
         }
 
         public TodoItem GenerateItemModel(TodoItem model)
         {
             TodoItem result = new TodoItem();
+
+            if (model.Category != null)
+            {
+
+            }
 
             result.Id = _utility.WriteId().ToString();
             result.Title = model.Title;

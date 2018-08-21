@@ -36,13 +36,15 @@ namespace defaultApi.Controllers
         public IActionResult Post([FromBody]TodoItem value)
         {
             var model = _context.TodoItems;
+            var tempCategory = value.Category;
 
             if (string.IsNullOrEmpty(value.Id))
             {
                 value = _defaultUtility.GenerateItemModel(value);
             }
-           
-            
+
+            value.Category = tempCategory;
+            value.CategoryId = tempCategory.Id;
             model.Add(value);
             _context.SaveChanges();
 
@@ -68,6 +70,16 @@ namespace defaultApi.Controllers
         public IActionResult Delete(string id)
         {
             var model = _context.TodoItems;
+            var categoryModel = _context.Categories;
+            var tt = model.Find(id);
+
+            var test = categoryModel.Find(tt.CategoryId).TodoItems;
+            test.FindAll(x => x.CategoryId == tt.CategoryId);
+
+            for (int i = 0; i < categoryModel.Count(); i++)
+            {
+            }
+
             model.Remove(model.Find(id));
             _context.SaveChanges();
 

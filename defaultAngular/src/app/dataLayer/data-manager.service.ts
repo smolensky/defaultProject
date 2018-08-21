@@ -13,22 +13,29 @@ export class DataManagerService {
   getAllItems() : Observable<TodoItems> {
     let result: Observable<any>;
 
-    result = this.http.get('http://localhost:58468/api/default', { observe: 'body' });
+    result = this.http.get('http://localhost:58468/api/default');
 
     return result;
   }
 
-  getAllCategories() : Observable<any> {
+  getAllCategories() : Observable<Category> {
     let result : Observable<any>;
 
-    result = this.http.get('http://localhost:58468/api/default/some');
+    result = this.http.get('http://localhost:58468/api/category');
 
     return result;
   }
 
   saveItem(item) : Observable<any> {
-    let result = this.http.post('http://localhost:58468/api/default', item, httpOptions)
+    debugger;
+    let result = this.http.post('http://localhost:58468/api/default', item, httpOptions);
     
+    return result;
+  }
+
+  saveCategory(item) : Observable<any> {
+    let result = this.http.post('http://localhost:58468/api/category', item, httpOptions);
+
     return result;
   }
 
@@ -46,7 +53,7 @@ export class DataManagerService {
     return result;
   }
 
-  constructor(private http: HttpClient, private componentManager: ComponentManagerService) {
+  constructor(private http: HttpClient) {
 
   }
 }
